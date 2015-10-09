@@ -1,0 +1,13 @@
+[Unit]
+Description=Openshift
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=openshift
+Group=openshift
+EnvironmentFile=/etc/sysconfig/openshift
+ExecStart=/opt/miracle/openshift/openshift start --public-master=$OPENSHIFT_PUBLIC_MASTER
+
+[Install]
+WantedBy=multi-user.target
